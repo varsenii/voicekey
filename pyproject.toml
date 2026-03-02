@@ -1,0 +1,15 @@
+[project]
+name = "voicekey"
+version = "0.1.0"
+description = "Control terminal programs using voice commands"
+authors = [{ name = "Vasyl Arsenii" }]
+readme = "README.md"
+requires-python = ">=3.9"
+
+dependencies = [
+    "vosk",
+    "sounddevice",
+]
+
+[project.scripts]
+voicekey = "voicekey.__main__:main"

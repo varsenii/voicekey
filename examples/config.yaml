@@ -1,0 +1,58 @@
+# examples/config.yaml
+# Each item maps a spoken "phrase" (exact match) to an action.
+# action.type : one of "keypress", "run", "stop"
+#
+# For keypress:
+#   action:
+#     type: keypress
+#     id: recorder     # optional target runner id (if omitted, and only one runner exists, it's used)
+#     key: "r"         # single char or named key ("enter", "space", "up arrow", etc.)
+#     auto_enter: true # optional; if true will append newline for single-char keys
+#
+# For run:
+#   action:
+#     type: run
+#     id: recorder
+#     script: examples/teleop_target.py
+#     args: ["--foo", "bar"]
+#
+# For stop:
+#   action:
+#     type: stop
+#     id: recorder   # optional: if omitted and only one runner exists, that runner will be stopped
+
+commands:
+  - phrase: "start operation"
+    action:
+      type: run
+      script: examples/teleop_test_script.py
+      args: []
+
+  - phrase: "stop operation"
+    action:
+      type: stop
+      script: examples/teleop_test_script.py
+  
+  - phrase: "quit"
+    action:
+      type: keypress
+      script: examples/teleop_test_script.py
+      key: "q"
+
+  - phrase: "sync"
+    action:
+      type: keypress
+      key: "r"
+      script: examples/teleop_test_script.py
+
+  - phrase: "start recording"
+    action:
+      type: keypress
+      key: "s"
+      script: examples/teleop_test_script.py
+  
+  - phrase: "stop recording"
+    action:
+      type: keypress
+      key: "s"
+      script: examples/teleop_test_script.py
